@@ -1,0 +1,208 @@
+#SignIn{
+    background: #f9f9f9;
+    padding:30px;
+    width: 300px;
+    margin: 50px auto;
+    border-radius: 0 4px 12px rgba(0,0,0,0.2);
+    text-align: center;
+    
+}
+#SignIn h1{
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+/*Input box*/
+#SignIn button{
+    margin: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:0.3s;
+}
+
+#Quizsection h2{
+    font-size: 19px;
+    font-weight: bold;
+    color: #2c3e50;
+
+    margin-bottom: 20px;
+}
+*{
+    background-color: #a3a4a5;
+}
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #c0c8e8 0%, #b0bed9 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .container {
+      background: rgba(239, 237, 237, 0.95);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      color: #5b6577;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      color: #4a5568;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 10px;
+      min-width: 120px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-btn {
+      background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      margin: 10px auto;
+      text-align: left;
+      padding: 15px 20px;
+      background: #f7fafc;
+      color: #947e7e;
+      border: 2px solid #e2e8f0;
+    }
+
+    .option-btn:hover {
+      background: #edf2f7;
+      border-color: #cbd5e0;
+    }
+
+    .correct {
+      background: #c6f6d5 !important;
+      border-color: #68d391 !important;
+    }
+
+    .incorrect {
+      background: #fed7d7 !important;
+      border-color: #fc8181 !important;
+    }
+
+    .question-counter {
+      color: #718096;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .score-display {
+      font-size: 1.5em;
+      color: #667eea;
+      margin: 20px 0;
+    }
+
+    .loading {
+      color: #718096;
+      font-style: italic;
+    }
+
+    #quizSection, #welcomeMessage, #resultsSection {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Additional styles for enhanced features */
+    .achievement-badge {
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+      color: #744210;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      font-weight: bold;
+      border: 2px solid #f6e05e;
+      display: none;
+    }
+
+    .retry-button {
+      background: linear-gradient(135deg, #ed8936 0%, #c05621 100%);
+      margin-top: 20px;
+    }
+
+    .error {
+      color: #e53e3e !important;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #718096;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .leaderboard-btn {
+      background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+    }

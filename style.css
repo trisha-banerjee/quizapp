@@ -1,0 +1,50 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body background and font */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #b2bfd7 0%, #e69fd5 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main container */
+.container {
+  background: #f3efef;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 400px;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Buttons (links styled as buttons) */
+.btn {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 12px 25px;
+  background: #3300ff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}

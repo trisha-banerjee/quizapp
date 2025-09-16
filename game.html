@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizify</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #c0c8e8 0%, #b0bed9 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .container {
+      background: rgba(239, 237, 237, 0.95);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      color: #5b6577;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      color: #4a5568;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 300px;
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 10px;
+      min-width: 120px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-btn {
+      background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      margin: 10px auto;
+      text-align: left;
+      padding: 15px 20px;
+      background: #f7fafc;
+      color: #947e7e;
+      border: 2px solid #e2e8f0;
+    }
+
+    .option-btn:hover {
+      background: #edf2f7;
+      border-color: #cbd5e0;
+    }
+
+    .correct {
+      background: #c6f6d5 !important;
+      border-color: #68d391 !important;
+    }
+
+    .incorrect {
+      background: #fed7d7 !important;
+      border-color: #fc8181 !important;
+    }
+
+    .question-counter {
+      color: #718096;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .score-display {
+      font-size: 1.5em;
+      color: #667eea;
+      margin: 20px 0;
+    }
+
+    .loading {
+      color: #718096;
+      font-style: italic;
+    }
+
+    #quizSection, #welcomeMessage, #resultsSection {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Additional styles for enhanced features */
+    .achievement-badge {
+      background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+      color: #744210;
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      font-weight: bold;
+      border: 2px solid #f6e05e;
+      display: none;
+    }
+
+    .retry-button {
+      background: linear-gradient(135deg, #ed8936 0%, #c05621 100%);
+      margin-top: 20px;
+    }
+
+    .error {
+      color: #e53e3e !important;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #718096;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .leaderboard-btn {
+      background: linear-gradient(135deg, #38b2ac 0%, #319795 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sign In Section -->
+    <div id="signInSection">
+      <h1>Quizify</h1>
+      <input type="text" id="username" placeholder="Enter Your Name" maxlength="20">
+      <br><br>
+      <button onclick="startQuiz()">Start Quiz</button>
+      <button class="back-btn" onclick="goBack()">Back</button>
+      <button class="leaderboard-btn" onclick="viewLeaderboard()">🏆 Leaderboard</button>
+    </div>
+
+    <!-- Welcome Message -->
+    <div id="welcomeMessage">
+      <h2 id="welcomeText"></h2>
+      <p class="loading">
+        <span class="spinner"></span>
+        Your quiz will start soon🎉...
+      </p>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quizSection">
+      <div class="question-counter" id="questionCounter"></div>
+      <h2 id="questionText">Question will appear here</h2>
+      <div id="options"></div>
+      <div style="margin-top: 20px;">
+        <span id="scoreDisplay">Score: 0</span>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection">
+      <h2>Quiz Complete!</h2>
+      <div class="score-display" id="finalScore"></div>
+      <p id="resultMessage"></p>
+      <div class="achievement-badge" id="achievementBadge">
+        <div id="achievementText"></div>
+      </div>
+      <button onclick="restartQuiz()">Play Again</button>
+      <button class="back-btn" onclick="goToSignIn()">Back to Start</button>
+      <button class="leaderboard-btn" onclick="viewLeaderboard()">🏆 View Leaderboard</button>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="game.js"></script>
+</body>
+</html>
